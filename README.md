@@ -1,0 +1,2 @@
+# Scope
+cryptocurrency portfolio application 
