@@ -1,28 +1,8 @@
-"""
-from flask import Flask
-from .routes import bp
-
-
-def init_server(config=None):
-    server = Flask(__name__)
-    if config is not None:
-        if isinstance(config, dict):
-            server.config.update(config)
-        elif config.endswith(".py"):
-            server.config.from_pyfile(config)
-    register(server)
-    return server
-
-
-def register(server):
-    server.register_blueprint(bp, url_prefix="")
-
-"""
-
 import functools
 import json
 import os
 import flask
+from api import api
 from authlib.client import OAuth2Session
 import google.oauth2.credentials
 import googleapiclient.discovery
@@ -37,6 +17,7 @@ server = flask.Flask(__name__)
 server.secret_key = os.environ.get("FN_FLASK_SECRET_KEY", default=False)
 
 server.register_blueprint(google.testApp)
+server.register_blueprint(api, url_prefix="/api")
 
 
 @server.route("/")
