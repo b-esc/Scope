@@ -3,6 +3,7 @@ import json
 import os
 import flask
 from api import api
+from portfolio import portfolio
 from authlib.client import OAuth2Session
 import google.oauth2.credentials
 import googleapiclient.discovery
@@ -18,6 +19,7 @@ server.secret_key = os.environ.get("FN_FLASK_SECRET_KEY", default=False)
 
 server.register_blueprint(google.testApp)
 server.register_blueprint(api, url_prefix="/api")
+server.register_blueprint(portfolio, url_prefix="/portfolio")
 
 
 @server.route("/")
