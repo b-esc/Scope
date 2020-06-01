@@ -1,14 +1,9 @@
-from flask import request, redirect
-from flask_oauth import OAuth
-from server import server
-from server.models import Test
-from server import db
+from flask import Flask 
+
+server = Flask(__name__)
 
 
-@app.route('/LOU')
-def lou():
-    nice
+@server.route("/")
+def index():
+    return "Scope Index Root"
 
-@app.route('/login/twitter')
-def loginTwitter():
-    return
