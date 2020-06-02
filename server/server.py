@@ -2,11 +2,13 @@ import functools
 import json
 import os
 import flask
+from flask_cors import CORS
 from api import api
 from authlib.client import OAuth2Session
 import google.oauth2.credentials
 import googleapiclient.discovery
 from auth import google
+
 
 print(
     "Credendtials from environ: {}".format(
@@ -18,7 +20,7 @@ server.secret_key = os.environ.get("FN_FLASK_SECRET_KEY", default=False)
 
 server.register_blueprint(google.testApp)
 server.register_blueprint(api, url_prefix="/api")
-
+CORS(server)
 
 @server.route("/")
 def index():
