@@ -9,23 +9,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Title from './Title';
 import queryTopSum from '../utils/queryTopSum';
-
-// Generate Order Data
-function createData(id, date, name, shipTo, paymentMethod, amount) {
-  return { id, date, name, shipTo, paymentMethod, amount };
-}
-
-const rows = [
-  createData(0, '16 Mar, 2019', 'Elvis Presley', 'Tupelo, MS', 'VISA ⠀•••• 3719', 312.44),
-  createData(1, '16 Mar, 2019', 'Paul McCartney', 'London, UK', 'VISA ⠀•••• 2574', 866.99),
-  createData(2, '16 Mar, 2019', 'Tom Scholz', 'Boston, MA', 'MC ⠀•••• 1253', 100.81),
-  createData(3, '16 Mar, 2019', 'Michael Jackson', 'Gary, IN', 'AMEX ⠀•••• 2000', 654.39),
-  createData(4, '15 Mar, 2019', 'Bruce Springsteen', 'Long Branch, NJ', 'VISA ⠀•••• 5919', 212.79),
-];
-
-function preventDefault(event) {
-  event.preventDefault();
-}
+import { useStore } from 'react-context-hook';
 
 const useStyles = makeStyles((theme) => ({
   seeMore: {
@@ -35,41 +19,44 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Summary() {
   const classes = useStyles();
+  const [summary, setSummary] = useStore("summary");
+  const setPreview = async () => {
+    let preview = await queryTopSum(0, 5);
+    setSummary(preview);
+  }
 
-const summary = async () => {
-  console.log("Calling endpoint...");
-  let data = await queryTopSum(0, 20);
-  console.log(data);
-}
-summary();
-
+  let tableBody = summary.map(x => {
+    return(
+      <TableRow>
+        <TableCell>{x.rank}</TableCell>
+        <TableCell>{x.symbol}</TableCell>
+        <TableCell>{x.name}</TableCell>
+        <TableCell align="right">{x.price_usd}</TableCell>
+      </TableRow>
+    )
+  })
   return (
     <React.Fragment>
-      <Title>Recent Orders</Title>
+      <Title>Top Summary</Title>
       <Table size="small">
         <TableHead>
           <TableRow>
-            <TableCell>{summary}</TableCell>
+            <TableCell>Rank</TableCell>
+            <TableCell>Symbol</TableCell>
             <TableCell>Name</TableCell>
-            <TableCell>Ship To</TableCell>
-            <TableCell>Payment Method</TableCell>
-            <TableCell align="right">Sale Amount</TableCell>
+            <TableCell align="right">Price in USD</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.id}>
-              <TableCell>{row.date}</TableCell>
-              <TableCell>{row.name}</TableCell>
-              <TableCell>{row.shipTo}</TableCell>
-              <TableCell>{row.paymentMethod}</TableCell>
-              <TableCell align="right">{row.amount}</TableCell>
-            </TableRow>
-          ))}
+          {tableBody}
         </TableBody>
       </Table>
       <div className={classes.seeMore}>
-        <Link color="primary" href="#" onClick={preventDefault}>
+        <Link color="primary" href="#" onClick={async () => {
+          let more_summary = await queryTopSum(0, 20);
+          console.log("MORE SUMMARY",more_summary)
+          setSummary(more_summary);
+        }}>
           See more orders
         </Link>
       </div>

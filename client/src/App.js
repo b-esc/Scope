@@ -1,26 +1,28 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { withStore } from 'react-context-hook';
+import Dashboard from './components/Dashboard';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Dashboard />
     </div>
   );
 }
 
-export default App;
+const initialState = {
+  //top_summary values
+  summary: [{rank:1, symbol:"LOU", name:"lou sonetz", price_usd:21.2},
+            {rank:2, symbol:"CHR", name:"chris sonetz", price_usd:1}],
+}
+
+const storeConfig ={
+  // Below console.log's on each state change
+  listener: (state) =>{
+    console.log('state changed!', state)
+  }
+}
+
+export default withStore(App, initialState, storeConfig)
