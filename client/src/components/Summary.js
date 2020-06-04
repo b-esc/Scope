@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import axios from "axios";
 import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
@@ -20,10 +20,23 @@ const useStyles = makeStyles((theme) => ({
 export default function Summary() {
   const classes = useStyles();
   const [summary, setSummary] = useStore("summary");
+  const [summary_preview, isPreview] = useStore("summary_preview_msg");
+
   const setPreview = async () => {
     let preview = await queryTopSum(0, 5);
     setSummary(preview);
+    isPreview(true);
   }
+  const setLargeView = async () => {
+    let more_summary = await queryTopSum(0, 20);
+    setSummary(more_summary);
+    isPreview(false);
+  }
+
+  //render onLoad once
+  useEffect(() => {
+    setPreview();
+  }, []);
 
   let tableBody = summary.map(x => {
     return(
@@ -31,35 +44,44 @@ export default function Summary() {
         <TableCell>{x.rank}</TableCell>
         <TableCell>{x.symbol}</TableCell>
         <TableCell>{x.name}</TableCell>
-        <TableCell align="right">{x.price_usd}</TableCell>
+        <TableCell align="left">{x.price_usd}</TableCell>
+        <TableCell align="left">{x.market_cap_usd}</TableCell>
+        <TableCell align="center">{x.percent_change_24h}</TableCell>
+        <TableCell align="center">{x.percent_change_7d}</TableCell>
       </TableRow>
     )
   })
   return (
     <React.Fragment>
       <Title>Top Summary</Title>
-      <Table size="small">
+      <Table size="medium">
         <TableHead>
           <TableRow>
             <TableCell>Rank</TableCell>
             <TableCell>Symbol</TableCell>
             <TableCell>Name</TableCell>
-            <TableCell align="right">Price in USD</TableCell>
+            <TableCell align="left">Price in USD</TableCell>
+            <TableCell align="left">Market Cap in USD</TableCell>
+            <TableCell align="center">% Change in 24 hours</TableCell>
+            <TableCell align="center">% Change in 7 days</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {tableBody}
         </TableBody>
       </Table>
-      <div className={classes.seeMore}>
-        <Link color="primary" href="#" onClick={async () => {
-          let more_summary = await queryTopSum(0, 20);
-          console.log("MORE SUMMARY",more_summary)
-          setSummary(more_summary);
-        }}>
-          See more orders
-        </Link>
-      </div>
+        <div className={classes.seeMore}>
+            {summary_preview &&
+              <Link color="textSecondary" href="#" onClick={setLargeView}>
+                See more
+              </Link>
+            }
+            {!summary_preview &&
+              <Link color="textSecondary" href="#" onClick={setPreview}>
+                See less
+              </Link>
+            }
+        </div>
     </React.Fragment>
   );
 }

@@ -9,6 +9,7 @@ import Divider from '@material-ui/core/Divider';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
+import Box from '@material-ui/core/Box';
 import Summary from './Summary'
 
 const useStyles = makeStyles((theme) => ({
@@ -50,8 +51,10 @@ export default function Dashboard() {
       <CssBaseline />
       <AppBar position="absolute">
         <Toolbar className={classes.toolbar}>
-          <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-            Welcome to Scope
+          <Typography component="h1" variant="h4" color="inherit" noWrap className={classes.title}>
+            <Box fontFamily="Monospace">
+              Welcome to Scope
+            </Box>
           </Typography>
         </Toolbar>
       </AppBar>

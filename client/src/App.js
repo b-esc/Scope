@@ -16,6 +16,8 @@ const initialState = {
   //top_summary values
   summary: [{rank:1, symbol:"LOU", name:"lou sonetz", price_usd:21.2},
             {rank:2, symbol:"CHR", name:"chris sonetz", price_usd:1}],
+
+  summary_preview_msg : true,
 }
 
 const storeConfig ={
