@@ -4,8 +4,8 @@ from flask import Blueprint
 portfolio = Blueprint("portfolio", __name__)
 
 x = {
-    "BTC": 100,
-    "ETH": 66,
+    "90": 100,
+    "80": 66,
 }
 
 
@@ -14,33 +14,33 @@ def psummary_all():
     return str(x)
 
 
-@portfolio.route("/summary_single/<symbol>")
-def psummary_single(symbol):
-    return str(x[symbol])
+@portfolio.route("/summary_single/<uid>")
+def psummary_single(uid):
+    return str(x[uid])
 
 
-@portfolio.route("/add/<symbol>/<n>")
-def padd(symbol, n):
-    if symbol not in x:
-        x[symbol] = 0
-    x[symbol] = x[symbol] + int(n)
-    return str(x[symbol]) + " added to"
+@portfolio.route("/add/<uid>/<n>")
+def padd(uid, n):
+    if uid not in x:
+        x[uid] = 0
+    x[uid] = x[uid] + int(n)
+    return str(x[uid]) + " added to"
 
 
-@portfolio.route("/remove/<symbol>/<n>")
-def premove(symbol, n):
-    if symbol in x:
-        x[symbol] = x[symbol] - int(n)
+@portfolio.route("/remove/<uid>/<n>")
+def premove(uid, n):
+    if uid in x:
+        x[uid] = x[uid] - int(n)
     else:
-        x[symbol] = 0
+        x[uid] = 0
 
-    return str(x[symbol]) + " removed"
+    return str(x[uid]) + " removed"
 
 
 @portfolio.route("/reset")
 def preset(id_from_ticker):
     x = {
-        "BTC": 0,
-        "ETH": 0,
+        "90": 0,
+        "80": 0,
     }
     return str(x)
