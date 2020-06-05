@@ -10,7 +10,9 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
-import Summary from './Summary'
+
+import Summary from './Summary';
+import PortfolioSum from './PortfolioSum'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -68,10 +70,10 @@ export default function Dashboard() {
                 {/* <Chart /> */}
               </Paper>
             </Grid>
-            {/* Recent Deposits */}
+            {/* Portfolio Summary */}
             <Grid item xs={12} md={4} lg={3}>
               <Paper className={fixedHeightPaper}>
-                {/* <Deposits /> */}
+                <PortfolioSum />
               </Paper>
             </Grid>
             {/* Top Summarry */}
