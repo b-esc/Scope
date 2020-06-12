@@ -3,6 +3,9 @@ from flask import Blueprint
 
 api = Blueprint("api", __name__)
 
+# TOP BAR TICKER
+
+# LARGE TICKER FUNCTIONS
 
 @api.route("/market_summary")
 def market_summary():
