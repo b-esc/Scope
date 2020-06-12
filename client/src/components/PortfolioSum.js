@@ -19,13 +19,18 @@ export default function PortfolioSum() {
 
   const getSummary = async () => {
     let preview = await PortfolioControl.querySummary();
-    console.log(preview, "preview", typeof(preview));
 
     var preview_keys = Object.keys(preview);
-    console.log(preview_keys, "keys - preview");
+    var preview_values = Object.values(preview);
+    console.log(preview_values[0], typeof(preview_values[0]));
+
+    let total = 0;
     for(var i = 0; i < preview_keys.length; i++) {
-      //console.log("itr", i, " : ", preview_keys[i]);
+        let coin_price = await getPricebyID(preview_keys[i]);
+        let coin_value = parseInt(coin_price) * preview_values[i];
+        total += coin_value;
     }
+    console.log(total);
   }
 
   const getPricebyID = async (id) => {
@@ -35,7 +40,7 @@ export default function PortfolioSum() {
 
   //render onLoad once
   useEffect(() => {
-
+    getSummary();
   }, []);
 
   return (
@@ -47,11 +52,6 @@ export default function PortfolioSum() {
       <Typography color="textSecondary" className={classes.depositContext}>
         on 15 March, 2019
       </Typography>
-      <div>
-        <Link color="primary" href="#" onClick={getSummary}>
-          View balance
-        </Link>
-      </div>
     </React.Fragment>
   );
 }
