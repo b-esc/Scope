@@ -2,7 +2,7 @@ import axios from "axios";
 
 let endpoint = "http://localhost:8040";
 
-var Portfolio = {
+var PortfolioControl = {
   querySummary : querySummary,
 }
 
@@ -14,4 +14,4 @@ async function querySummary()
   })
 }
 
-export default Portfolio;
+export default PortfolioControl;

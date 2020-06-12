@@ -1,14 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import axios from "axios";
+import { useStore } from 'react-context-hook';
 import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Title from './Title';
-import Portfolio from '../utils/portfolioControl';
-
-function preventDefault(event) {
-  event.preventDefault();
-}
+import PortfolioControl from '../utils/portfolioControl';
+import querySingleSum from '../utils/querySingleSum';
 
 const useStyles = makeStyles({
   depositContext: {
@@ -16,14 +14,30 @@ const useStyles = makeStyles({
   },
 });
 
-const summary = async () => {
-  let preview = await Portfolio.querySummary();
-  console.log(preview);
-}
-summary();
-
 export default function PortfolioSum() {
   const classes = useStyles();
+
+  const getSummary = async () => {
+    let preview = await PortfolioControl.querySummary();
+    console.log(preview, "preview", typeof(preview));
+
+    var preview_keys = Object.keys(JSON.parse(preview));
+    console.log(preview_keys, "keys - preview");
+    for(var i = 0; i < preview_keys.length; i++) {
+      //console.log("itr", i, " : ", preview_keys[i]);
+    }
+  }
+
+  const getPricebyID = async (id) => {
+    let info = await querySingleSum(id);
+    return info.data[0].price_usd;
+  }
+
+  //render onLoad once
+  useEffect(() => {
+
+  }, []);
+
   return (
     <React.Fragment>
       <Title>Current Holdings</Title>
@@ -34,7 +48,7 @@ export default function PortfolioSum() {
         on 15 March, 2019
       </Typography>
       <div>
-        <Link color="primary" href="#" onClick={preventDefault}>
+        <Link color="primary" href="#" onClick={getSummary}>
           View balance
         </Link>
       </div>
