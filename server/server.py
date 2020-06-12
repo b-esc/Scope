@@ -17,6 +17,7 @@ print(
     )
 )
 server = flask.Flask(__name__)
+server.config['JSON_SORT_KEYS'] = False
 server.secret_key = os.environ.get("FN_FLASK_SECRET_KEY", default=False)
 
 server.register_blueprint(google.testApp)

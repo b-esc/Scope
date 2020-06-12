@@ -21,7 +21,7 @@ export default function PortfolioSum() {
     let preview = await PortfolioControl.querySummary();
     console.log(preview, "preview", typeof(preview));
 
-    var preview_keys = Object.keys(JSON.parse(preview));
+    var preview_keys = Object.keys(preview);
     console.log(preview_keys, "keys - preview");
     for(var i = 0; i < preview_keys.length; i++) {
       //console.log("itr", i, " : ", preview_keys[i]);

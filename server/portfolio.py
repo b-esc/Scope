@@ -1,5 +1,6 @@
 import requests
 from flask import Blueprint
+from flask import jsonify
 
 portfolio = Blueprint("portfolio", __name__)
 
@@ -11,7 +12,9 @@ x = {
 
 @portfolio.route("/summary")
 def psummary_all():
-    return str(x)
+    y = jsonify(**x)
+    print(y)
+    return y
 
 
 @portfolio.route("/summary_single/<uid>")
