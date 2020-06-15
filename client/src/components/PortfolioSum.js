@@ -16,13 +16,17 @@ const useStyles = makeStyles({
 
 export default function PortfolioSum() {
   const classes = useStyles();
+  const [cur_holdings, setHoldings] = useStore("cur_holdings");
+
+  const getPricebyID = async (id) => {
+    let info = await querySingleSum(id);
+    return info.data[0].price_usd;
+  }
 
   const getSummary = async () => {
     let preview = await PortfolioControl.querySummary();
-
     var preview_keys = Object.keys(preview);
     var preview_values = Object.values(preview);
-    console.log(preview_values[0], typeof(preview_values[0]));
 
     let total = 0;
     for(var i = 0; i < preview_keys.length; i++) {
@@ -30,12 +34,7 @@ export default function PortfolioSum() {
         let coin_value = parseInt(coin_price) * preview_values[i];
         total += coin_value;
     }
-    console.log(total);
-  }
-
-  const getPricebyID = async (id) => {
-    let info = await querySingleSum(id);
-    return info.data[0].price_usd;
+    setHoldings(total);
   }
 
   //render onLoad once
@@ -46,12 +45,9 @@ export default function PortfolioSum() {
   return (
     <React.Fragment>
       <Title>Current Holdings</Title>
-      <Typography component="p" variant="h4">
-        $3,024.00
-      </Typography>
-      <Typography color="textSecondary" className={classes.depositContext}>
-        on 15 March, 2019
-      </Typography>
+        <Typography component="p" variant="h4" textAlign="center">
+            $ {cur_holdings}
+        </Typography>
     </React.Fragment>
   );
 }

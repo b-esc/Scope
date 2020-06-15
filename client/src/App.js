@@ -18,6 +18,7 @@ const initialState = {
             {rank:2, symbol:"CHR", name:"chris sonetz", price_usd:1}],
 
   summary_preview_msg: true,
+  cur_holdings: 0,
 }
 
 const storeConfig ={
