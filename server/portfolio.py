@@ -12,6 +12,7 @@ x = {
 
 @portfolio.route("/summary")
 def psummary_all():
+    # any time we give back a dict do this
     y = jsonify(**x)
     print(y)
     return y
