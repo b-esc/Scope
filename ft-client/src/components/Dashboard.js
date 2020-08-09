@@ -1,23 +1,33 @@
 import React from 'react';
 import clsx from 'clsx';
 import { useStyles } from '../Styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
+import { useStore } from 'react-context-hook';
 import Divider from '@material-ui/core/Divider';
 import Container from '@material-ui/core/Container';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import Navbar from './Navbar';
+import NavContainer from './NavContainer.js';
+import NavBar from './Navbar';
+import Summary from './Summary';
 
-// import Summary from './Summary';
-// import PortfolioSum from './PortfolioSum'
+import queryTopSum from '../utils/queryTopSum';
 
-export default function Dashboard() {
+export default function Dashboard()
+{
   const StyleClasses = useStyles();
   const fixedHeightPaper = clsx(StyleClasses.paper, StyleClasses.fixedHeight);
+  const [tickerData, setTickerData] = useStore("mainPageTickerData");
+
+  const setPreview = async () => {
+    let preview = await queryTopSum(0, 5);
+    setTickerData(preview);
+  }
+
   return (
     <div className={StyleClasses.root}>
-      <Navbar />
       <CssBaseline />
+      <NavBar />
       <main className={StyleClasses.content}>
         <div className={StyleClasses.appBarSpacer} />
         <Container maxWidth="lg" className={StyleClasses.container}>
@@ -37,12 +47,12 @@ export default function Dashboard() {
             {/* Top Summarry */}
             <Grid item xs={12}>
               <Paper className={StyleClasses.paper}>
-                summary should go here
+                  <Summary mainPageTickerData={tickerData}/>
                 </Paper>
             </Grid>
           </Grid>
         </Container>
       </main>
     </div>
-  );
+  )
 }

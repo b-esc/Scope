@@ -29,4 +29,7 @@ export const useStyles = makeStyles((theme) => ({
     fixedHeight: {
       height: 240,
     },
+    seeMore: {
+      marginTop: theme.spacing(3),
+    }
   }));

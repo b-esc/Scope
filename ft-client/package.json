@@ -7,6 +7,7 @@
   },
   "devDependencies": {
     "@material-ui/core": "^4.11.0",
+    "axios": "^0.19.2",
     "flow-bin": "^0.131.0",
     "react": "^16.13.1",
     "react-context-hook": "^2.2.0",

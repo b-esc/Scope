@@ -1,10 +1,10 @@
 // @flow
 import React from 'react';
 import type {Coin} from './Types';
-import Dashboard from './components/Container';
+import Dashboard from './components/Dashboard';
 import { withStore } from 'react-context-hook';
 
-export default function App(){
+function App(){
   return(
     <div className="App">
       <Dashboard/>
@@ -25,8 +25,8 @@ const sampleCoin : Coin = {
 
 const sampleCoin2 : Coin = {
   rank: 2,
-  symbol: "LOU",
-  name: "LOU SONETZ COIN",
+  symbol: "BLM",
+  name: "BLACK LIVES MATTER",
   price: 234,
   marketCap: 4324,
   volume24hr: 423423,
@@ -40,3 +40,12 @@ const initialState : {
 } = {
   mainPageTickerData: [sampleCoin, sampleCoin2, sampleCoin, sampleCoin2],
 }
+
+const storeConfig ={
+  // Below console.log's on each state change
+  listener: (state) =>{
+    console.log('state changed!', state)
+  }
+}
+
+export default withStore(App, initialState, storeConfig)
