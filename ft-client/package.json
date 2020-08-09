@@ -1,0 +1,31 @@
+{
+  "name": "scope",
+  "main": "lib/index.js",
+  "scripts": {
+    "flow": "flow",
+    "start": "react-scripts start"
+  },
+  "devDependencies": {
+    "@material-ui/core": "^4.11.0",
+    "flow-bin": "^0.131.0",
+    "react": "^16.13.1",
+    "react-context-hook": "^2.2.0",
+    "react-dom": "^16.13.1"
+  },
+  "dependencies": {
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "^3.4.1"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
