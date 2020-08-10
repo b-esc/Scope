@@ -1,7 +1,7 @@
 // @ flow
 
 import React, { useEffect } from 'react';
-import axios from "axios";
+import axios from 'axios';
 import { useStore } from 'react-context-hook';
 import Link from '@material-ui/core/Link';
 import {useStyles} from '../Styles';

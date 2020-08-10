@@ -10,3 +10,8 @@ export type Coin = {
     change7days: number,
     change1month: number,
 }
+
+export type CoinPair = {
+    coinPairStr: string, // 'BTC/LTC'
+    change24hr: number,
+}
