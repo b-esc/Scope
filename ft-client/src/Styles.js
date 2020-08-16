@@ -29,6 +29,9 @@ export const useStyles = makeStyles((theme) => ({
     fixedHeight: {
       height: 240,
     },
+    profilePicture: {
+      height: 140,
+    },
     seeMore: {
       marginTop: theme.spacing(3),
     }
