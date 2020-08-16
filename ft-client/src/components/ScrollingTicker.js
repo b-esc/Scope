@@ -1,5 +1,4 @@
 // @flow
-import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
@@ -22,7 +21,7 @@ export default function ScrollingTicker({ scrollingTickerCoinPairs }: Props) {
     const [key, setKey] = useState(1);
     const scrolling = useSpring({
         from: { transform: "translate(90%, 0)" },
-        to: { transform: "translate(-60%,0)" },
+        to: { transform: "translate(-60%, 0)" },
         config: { duration: 14000},
         reset: true,
         onRest: () => {
@@ -32,18 +31,15 @@ export default function ScrollingTicker({ scrollingTickerCoinPairs }: Props) {
     
     const toScroll = scrollingTickerCoinPairs.map(pair => {
         let isPositive = (pair.change24hr > 0);
-        let pairInfo = <div >
-            {pair.coinPairStr} + {' '} + {pair.change24hr}
-            
-            {isPositive && <TrendingUpTwoToneIcon fontSize='large'/>}
-            {!isPositive && <TrendingDownTwoToneIcon fontSize='large'/>}
-        </div>
         return (
             <Chip
-                icon={isPositive ? <TrendingUpTwoToneIcon fontSize='large'/> : <TrendingDownTwoToneIcon fontSize='large'/>}
+                icon={
+                isPositive ? <TrendingUpTwoToneIcon fontSize='large'/> 
+                : <TrendingDownTwoToneIcon fontSize='large'/>
+                }
                 label={`${pair.coinPairStr}  ${pair.change24hr}`}
                 clickable
-                color={isPositive ? "primary" : "secondary"}
+                color={isPositive ? "green" : "secondary"}
                 style={{marginRight:"1em"}}
             />
         )

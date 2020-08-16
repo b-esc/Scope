@@ -2,7 +2,6 @@ import React from 'react';
 import clsx from 'clsx';
 import { useStyles } from '../Styles';
 import { useStore } from 'react-context-hook';
-import Divider from '@material-ui/core/Divider';
 import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
