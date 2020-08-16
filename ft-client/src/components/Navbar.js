@@ -18,12 +18,16 @@ const samplePairs: Array<CoinPair> = [{ coinPairStr: "BTC/USD", change24hr: 2.4 
 export default function Navbar() {
     const StyleClasses = useStyles();
     return (
+        <div>
+
         <AppBar position="absolute">
-            <Toolbar className={StyleClasses.toolbar}>
-                <Typography component="h1" variant="h4" color="inherit" noWrap className={StyleClasses.title}>
-                </Typography>
-            </Toolbar>
+        <Toolbar className={StyleClasses.toolbar}>
+            <Typography component="h1" variant="h4" color="inherit" noWrap className={StyleClasses.title}>
+            </Typography>
             <ScrollingTicker scrollingTickerCoinPairs={samplePairs} />
+
+            </Toolbar>
         </AppBar>
+        </div>
     )
 }

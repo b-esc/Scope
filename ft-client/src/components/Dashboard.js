@@ -8,6 +8,7 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import NavContainer from './NavContainer.js';
 import NavBar from './Navbar';
+import TestGraph from './TestGraph';
 import Summary from './Summary';
 
 import queryTopSum from '../utils/queryTopSum';
@@ -40,7 +41,7 @@ export default function Dashboard()
             {/* Portfolio Summary */}
             <Grid item xs={12} md={4} lg={3}>
               <Paper className={fixedHeightPaper}>
-                portfolio sum should go here
+                <TestGraph/>
                 </Paper>
             </Grid>
             {/* Top Summarry */}

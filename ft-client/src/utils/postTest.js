@@ -14,5 +14,5 @@ export default async function postRqTest()
         (res) =>{
             console.log("hey i have res lou sonetz: LOU SONETZ:: ", res);
         }
-    );
+    )
 }
