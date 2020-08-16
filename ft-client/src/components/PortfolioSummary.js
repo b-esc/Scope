@@ -37,7 +37,7 @@ export default function PortfolioSum()
                   <CardMedia
                     classes={StyleClasses.profilePicture}
                     component="img"
-                    src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
+                    src="https://i.imgur.com/fUIsscE.jpg"
                     title="Profile Picture"
                   />
                   <CardContent>
@@ -60,10 +60,12 @@ export default function PortfolioSum()
               </Card>
             </Grid>
             {/* Public Portfolio */}
-            <Grid item xs={9}>
-              <Paper className = {StyleClasses.paper}>
-                Public Portfolio
-              </Paper>
+            <Grid item xs={9} container direction="column">
+              <Grid item>
+                <Paper className = {StyleClasses.paper}>
+                  Public Portfolio
+                </Paper>
+              </Grid>
             </Grid>
           </Grid>
         </Container>
