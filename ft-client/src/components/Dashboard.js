@@ -2,16 +2,14 @@ import React from 'react';
 import clsx from 'clsx';
 import { useStyles } from '../Styles';
 import { useStore } from 'react-context-hook';
-import Container from '@material-ui/core/Container';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import NavContainer from './NavContainer.js';
+import {Paper, Grid, CssBaseline, Container} from '@material-ui/core';
 import NavBar from './Navbar';
 import TestGraph from './TestGraph';
 import Summary from './Summary';
+import {SampleLineData} from '../Types';
 
 import queryTopSum from '../utils/queryTopSum';
+import LightweightChart from './LightweightChart';
 
 export default function Dashboard()
 {
@@ -26,7 +24,6 @@ export default function Dashboard()
 
   return (
     <div className={StyleClasses.root}>
-      <CssBaseline />
       <NavBar />
       <main className={StyleClasses.content}>
         <div className={StyleClasses.appBarSpacer} />
@@ -41,7 +38,12 @@ export default function Dashboard()
             {/* Portfolio Summary */}
             <Grid item xs={12} md={4} lg={3}>
               <Paper className={fixedHeightPaper}>
-                <TestGraph/>
+                <LightweightChart
+                  containerId={"sampleLwChart"}
+                  width={243}
+                  height={243}
+                  lineData={SampleLineData}
+                />
                 </Paper>
             </Grid>
             {/* Top Summarry */}

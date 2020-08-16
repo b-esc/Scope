@@ -1,14 +1,10 @@
 // @flow
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
-import Chip from '@material-ui/core/Chip';
+import { Chip, Box, Typography, Toolbar } from '@material-ui/core';
 import React, { useState } from 'react';
 import { useStyles } from '../Styles';
 import { useSpring, animated } from 'react-spring';
 import type { CoinPair } from '../Types';
-import TrendingUpTwoToneIcon from '@material-ui/icons/TrendingUpTwoTone';
-import TrendingDownTwoToneIcon from '@material-ui/icons/TrendingDownTwoTone';
+import { TrendingUpTwoTone, TrendingDownTwoTone } from '@material-ui/icons';
 
 type Props = {
     scrollingTickerCoinPairs: Array<CoinPair>
@@ -22,47 +18,39 @@ export default function ScrollingTicker({ scrollingTickerCoinPairs }: Props) {
     const scrolling = useSpring({
         from: { transform: "translate(90%, 0)" },
         to: { transform: "translate(-60%, 0)" },
-        config: { duration: 14000},
+        config: { duration: 14000 },
         reset: true,
         onRest: () => {
             setKey(key + 1);
         }
     });
-    
+
     const toScroll = scrollingTickerCoinPairs.map(pair => {
         let isPositive = (pair.change24hr > 0);
         return (
             <Chip
                 icon={
-                isPositive ? <TrendingUpTwoToneIcon fontSize='large'/> 
-                : <TrendingDownTwoToneIcon fontSize='large'/>
+                    isPositive ? <TrendingUpTwoTone fontSize='large' />
+                        : <TrendingDownTwoTone fontSize='large' />
                 }
                 label={`${pair.coinPairStr}  ${pair.change24hr}`}
                 clickable
                 color={isPositive ? "green" : "secondary"}
-                style={{marginRight:"1em"}}
+                style={{ marginRight: "1em" }}
             />
         )
     });
 
 
     return (
-        <Toolbar className={StyleClasses.toolbar}>
-            <Typography component="h1" variant="h4" color="inherit" noWrap className={StyleClasses.title}>
-                <Box fontFamily="Monospace">
-                    <div>
-                        <animated.div style={scrolling}>
-                            <Box
-                                display="flex"
-                                flexWrap="nowrap"
-                                p={1}
-                                m={1}>
-                                {toScroll}
-                            </Box>
-                        </animated.div>
-                    </div>
-                </Box>
-            </Typography>
-        </Toolbar>
+        <animated.div style={scrolling}>
+            <Box
+                display="flex"
+                flexWrap="nowrap"
+                p={1}
+                m={1}>
+                {toScroll}
+            </Box>
+        </animated.div>
     );
 };

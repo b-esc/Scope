@@ -3,13 +3,8 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
 import { useStore } from 'react-context-hook';
-import Link from '@material-ui/core/Link';
 import {useStyles} from '../Styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
+import {Table, TableBody, TableCell, TableHead, TableRow, Link} from '@material-ui/core';
 import Title from './Title';
 import type {Coin} from './Types';
 

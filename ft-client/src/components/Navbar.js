@@ -1,12 +1,9 @@
 // @flow
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Icon from '@material-ui/core/Icon';
-import Box from '@material-ui/core/Box';
+import { Paper, AppBar, Toolbar, Typography, Icon, Box, Grid, Button } from '@material-ui/core';
 import React from 'react';
 import { useStyles } from '../Styles';
 import ScrollingTicker from './ScrollingTicker';
+import { Home, AccountCircle } from '@material-ui/icons';
 import type { CoinPair } from '../Types';
 
 const samplePairs: Array<CoinPair> = [{ coinPairStr: "BTC/USD", change24hr: 2.4 },
@@ -18,16 +15,32 @@ const samplePairs: Array<CoinPair> = [{ coinPairStr: "BTC/USD", change24hr: 2.4 
 export default function Navbar() {
     const StyleClasses = useStyles();
     return (
-        <div>
-
         <AppBar position="absolute">
-        <Toolbar className={StyleClasses.toolbar}>
-            <Typography component="h1" variant="h4" color="inherit" noWrap className={StyleClasses.title}>
-            </Typography>
-            <ScrollingTicker scrollingTickerCoinPairs={samplePairs} />
+            <Grid container direction="column">
+                <Grid container spacing={5} direction="row" item justify="center">
+                    <Grid item>
+                        <Button variant="outlined">
+                            <Home /> Home
+                        </Button>
 
-            </Toolbar>
+                    </Grid>
+                    <Grid item>
+                        <Typography variant="h4" component="h4">
+                            Scope Digital Assets
+                        </Typography>
+                    </Grid>
+                    <Grid item >
+                        <Button variant="outlined">
+                            <AccountCircle /> Account
+                        </Button>
+
+                    </Grid>
+                </Grid>
+                <Grid item>
+                    <ScrollingTicker scrollingTickerCoinPairs={samplePairs} />
+                </Grid>
+            </Grid>
         </AppBar>
-        </div>
+
     )
 }
