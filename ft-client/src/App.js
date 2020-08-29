@@ -2,12 +2,13 @@
 import React from 'react';
 import type {Coin} from './Types';
 import Dashboard from './components/Dashboard';
+import PortfolioSummary from './components/PortfolioSummary';
 import { withStore } from 'react-context-hook';
 
 function App(){
   return(
     <div className="App">
-      <Dashboard/>
+      <PortfolioSummary />
     </div>
   )
 }
