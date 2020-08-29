@@ -10,7 +10,6 @@ import {
   Typography, Button
   } from '@material-ui/core';
 
-import NavContainer from './NavContainer.js';
 import NavBar from './Navbar';
 import TestGraph from './TestGraph';
 import Summary from './Summary';
