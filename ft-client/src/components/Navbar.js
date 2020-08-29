@@ -1,6 +1,7 @@
 // @flow
 import { Paper, AppBar, Toolbar, Typography, Icon, Box, Grid, Button } from '@material-ui/core';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useStyles } from '../Styles';
 import ScrollingTicker from './ScrollingTicker';
 import { Home, AccountCircle, Forum, TrendingUp} from '@material-ui/icons';
@@ -24,9 +25,11 @@ export default function Navbar() {
                         </Button>
                     </Grid>
                     <Grid item>
-                        <Button size="large" variant="outlined">
-                            <Home large/>
-                        </Button>
+                        <Link to="/">
+                            <Button size="large" variant="outlined">
+                                <Home large/>
+                            </Button>
+                        </Link>    
                     </Grid>
                     <Grid item>
                         <Typography variant="h4" component="h4">
@@ -39,9 +42,11 @@ export default function Navbar() {
                         </Button>
                     </Grid>
                     <Grid item >
-                        <Button size="large" variant="outlined">
-                            <TrendingUp large/>
-                        </Button>
+                        <Link to="/portfolio">
+                            <Button size="large" variant="outlined">
+                                <TrendingUp large/>
+                            </Button>
+                        </Link>
                     </Grid>
                 </Grid>
                 <Grid item>

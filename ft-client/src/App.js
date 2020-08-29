@@ -1,14 +1,31 @@
 // @flow
 import React from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 import type {Coin} from './Types';
 import Dashboard from './components/Dashboard';
 import PortfolioSummary from './components/PortfolioSummary';
 import { withStore } from 'react-context-hook';
+import NavBar from './components/Navbar';
+
 
 function App(){
   return(
     <div className="App">
-      <PortfolioSummary />
+      <Router>
+      {/* Navbar stays inside router */ }
+      <NavBar />
+        <Switch>
+          <Route>
+            <Route exact path="/" component={Dashboard}/>
+            <Route exact path="/portfolio" component={PortfolioSummary}/>
+          </Route>
+        </Switch>
+      </Router>
     </div>
   )
 }

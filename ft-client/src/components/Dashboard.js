@@ -3,7 +3,6 @@ import clsx from 'clsx';
 import { useStyles } from '../Styles';
 import { useStore } from 'react-context-hook';
 import { Paper, Grid, CssBaseline, Container } from '@material-ui/core';
-import NavBar from './Navbar';
 import TestGraph from './TestGraph';
 import Summary from './Summary';
 import { SampleLineData } from '../Types';
@@ -23,18 +22,21 @@ export default function Dashboard() {
 
   return (
     <div className={StyleClasses.root}>
-      <NavBar />
+      
       <main className={StyleClasses.content}>
         <div className={StyleClasses.appBarSpacer} />
         <Container maxWidth="lg" className={StyleClasses.container}>
           <Grid container spacing={3}>
-            {/* Chart */}
-            <Grid container item xs={12} md={8} lg={9}>
-              <Grid item xs={12}>
-                <Paper>
-                  <PostPreview />
-                </Paper>
-              </Grid>
+
+            {/* Top Summarry */}
+            <Grid item xs={12}>
+              <Paper className={StyleClasses.paper}>
+                <Summary mainPageTickerData={tickerData} />
+              </Paper>
+            </Grid>
+
+            {/* News Preview */}
+            <Grid container item>
               <Grid item>
                 <Paper>
                   <PostPreview />
@@ -53,12 +55,7 @@ export default function Dashboard() {
                 />
               </Paper>
             </Grid>
-            {/* Top Summarry */}
-            <Grid item xs={12}>
-              <Paper className={StyleClasses.paper}>
-                <Summary mainPageTickerData={tickerData} />
-              </Paper>
-            </Grid>
+
           </Grid>
         </Container>
       </main>
