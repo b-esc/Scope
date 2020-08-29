@@ -3,7 +3,7 @@ import { Paper, AppBar, Toolbar, Typography, Icon, Box, Grid, Button } from '@ma
 import React from 'react';
 import { useStyles } from '../Styles';
 import ScrollingTicker from './ScrollingTicker';
-import { Home, AccountCircle } from '@material-ui/icons';
+import { Home, AccountCircle, Forum, TrendingUp} from '@material-ui/icons';
 import type { CoinPair } from '../Types';
 
 const samplePairs: Array<CoinPair> = [{ coinPairStr: "BTC/USD", change24hr: 2.4 },
@@ -19,10 +19,14 @@ export default function Navbar() {
             <Grid container direction="column">
                 <Grid container spacing={5} direction="row" item justify="center">
                     <Grid item>
-                        <Button variant="outlined">
-                            <Home /> Home
+                        <Button size="large" variant="outlined">
+                            <Forum large/>
                         </Button>
-
+                    </Grid>
+                    <Grid item>
+                        <Button size="large" variant="outlined">
+                            <Home large/>
+                        </Button>
                     </Grid>
                     <Grid item>
                         <Typography variant="h4" component="h4">
@@ -30,10 +34,14 @@ export default function Navbar() {
                         </Typography>
                     </Grid>
                     <Grid item >
-                        <Button variant="outlined">
-                            <AccountCircle /> Account
+                        <Button size="large" variant="outlined">
+                            <AccountCircle large/>
                         </Button>
-
+                    </Grid>
+                    <Grid item >
+                        <Button size="large" variant="outlined">
+                            <TrendingUp large/>
+                        </Button>
                     </Grid>
                 </Grid>
                 <Grid item>
