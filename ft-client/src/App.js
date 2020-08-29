@@ -19,6 +19,8 @@ function App(){
       <Router>
       {/* Navbar stays inside router */ }
       <NavBar />
+      {/* TODO remove brazil */ }
+      <br></br>
         <Switch>
           <Route>
             <Route exact path="/" component={Dashboard}/>

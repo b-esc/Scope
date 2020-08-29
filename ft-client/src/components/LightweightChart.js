@@ -49,9 +49,8 @@ export default function LightweightChart({ containerId, width, height, lineData,
     }, []);
 
     return (
-        <div
-            style={{ "display": "flex" }}
+           <div
             id={containerId}
-            className={'LightweightChart'} />
+            className={'LightweightChart'} /> 
     )
 }

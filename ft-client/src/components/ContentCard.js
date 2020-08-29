@@ -1,21 +1,28 @@
 // @flow
 import React from 'react';
-import { useStyles } from '../Styles';
+import { makeStyles } from '@material-ui/core/styles';
 import {
     Container, CssBaseline, Grid, Paper, Card,
     CardActionArea, CardActions, CardMedia, CardContent,
     Typography, Button
     } from '@material-ui/core';
 
-export default function PostPreview(){
-    const StyleClasses = useStyles();
+type Props = {
+  rootMaxWidth: number,
+  mediaMaxHeight: number,
+  cardImg: any,
+}
 
+export default function ContentCard({rootMaxWidth, mediaMaxHeight, cardImg} : Props){
     return(
-        <Card>
+        <Card style={{maxWidth: rootMaxWidth}}>
         <CardActionArea>
           <CardMedia
+            style={{
+              maxHeight: mediaMaxHeight,
+            }}
             component="img"
-            src="https://i.imgur.com/fUIsscE.jpg"
+            image={cardImg}
             title="Profile Picture"
           />
           <CardContent>
