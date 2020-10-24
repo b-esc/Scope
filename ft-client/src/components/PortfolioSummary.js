@@ -14,6 +14,8 @@ import NavBar from './Navbar';
 import TestGraph from './TestGraph';
 import Summary from './Summary';
 import queryTopSum from '../utils/queryTopSum';
+import contentCard from './ContentCard';
+import ContentCard from './ContentCard';
 
 export default function PortfolioSum()
 {
@@ -31,32 +33,7 @@ export default function PortfolioSum()
           <Grid container direction="row" spacing={2}>
             {/* Personal Information */}
             <Grid item xs={3}>
-              <Card>
-                <CardActionArea>
-                  <CardMedia
-                    classes={StyleClasses.profilePicture}
-                    component="img"
-                    src="https://i.imgur.com/fUIsscE.jpg"
-                    title="Profile Picture"
-                  />
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      Lou Sonetz
-                    </Typography>
-                    <Typography variant="body2" color="textSecondary" component="p">
-                      I am an Engineer!
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-                <CardActions>
-                  <Button size="small" color="primary">
-                    Pop a Lou
-                  </Button>
-                  <Button size="small" color="primary">
-                    Learn More
-                  </Button>
-                </CardActions>
-              </Card>
+              <ContentCard mediaMaxHeight={240} cardImg={"https://i.imgur.com/fUIsscE.jpg"} />
             </Grid>
             {/* Public Portfolio */}
             <Grid item xs={9} container direction="column">

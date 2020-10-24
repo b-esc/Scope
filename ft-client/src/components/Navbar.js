@@ -36,16 +36,16 @@ export default function Navbar() {
                         </Typography>
                     </Grid>
                     <Grid item >
-                        <Button size="large" variant="outlined">
-                            <AccountCircle large/>
-                        </Button>
-                    </Grid>
-                    <Grid item >
                         <Link to="/portfolio">
                             <Button size="large" variant="outlined">
-                                <TrendingUp large/>
+                                <AccountCircle large/>
                             </Button>
                         </Link>
+                    </Grid>
+                    <Grid item >
+                        <Button size="large" variant="outlined">
+                            <TrendingUp large/>
+                        </Button>
                     </Grid>
                 </Grid>
                 <Grid item>
