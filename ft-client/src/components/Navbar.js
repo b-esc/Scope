@@ -19,13 +19,13 @@ export default function Navbar() {
             <Grid container direction="column">
                 <Grid container spacing={5} direction="row" item justify="center">
                     <Grid item>
-                        <Button size="large" variant="outlined">
+                        <Button size="large" variant="text">
                             <Forum large/>
                         </Button>
                     </Grid>
                     <Grid item>
                         <Link to="/">
-                            <Button size="large" variant="outlined">
+                            <Button size="large" variant="text">
                                 <Home large/>
                             </Button>
                         </Link>    
@@ -37,13 +37,13 @@ export default function Navbar() {
                     </Grid>
                     <Grid item >
                         <Link to="/portfolio">
-                            <Button size="large" variant="outlined">
+                            <Button size="large" variant="text">
                                 <AccountCircle large/>
                             </Button>
                         </Link>
                     </Grid>
                     <Grid item >
-                        <Button size="large" variant="outlined">
+                        <Button size="large" variant="text">
                             <TrendingUp large/>
                         </Button>
                     </Grid>
