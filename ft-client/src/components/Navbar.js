@@ -18,17 +18,19 @@ export default function Navbar() {
         <AppBar position="absolute">
             <Grid container direction="column">
                 <Grid container spacing={5} direction="row" item justify="center">
-                    <Grid item>
-                        <Button size="large" variant="text">
-                            <Forum large/>
-                        </Button>
-                    </Grid>
+                        <Grid item>
+                          <Link to="/stories">
+                            <Button size="large" variant="outlined">
+                                <Forum large/>
+                            </Button>
+                          </Link>
+                        </Grid>
                     <Grid item>
                         <Link to="/">
                             <Button size="large" variant="text">
                                 <Home large/>
                             </Button>
-                        </Link>    
+                        </Link>
                     </Grid>
                     <Grid item>
                         <Typography variant="h4" component="h4">

@@ -9,6 +9,7 @@ import {
 import type {Coin} from './Types';
 import Dashboard from './components/Dashboard';
 import PortfolioSummary from './components/PortfolioSummary';
+import StoriesPage from './components/StoriesPage';
 import { withStore } from 'react-context-hook';
 import NavBar from './components/Navbar';
 
@@ -25,6 +26,7 @@ function App(){
           <Route>
             <Route exact path="/" component={Dashboard}/>
             <Route exact path="/portfolio" component={PortfolioSummary}/>
+            <Route exact path="/stories" component={StoriesPage}/>
           </Route>
         </Switch>
       </Router>

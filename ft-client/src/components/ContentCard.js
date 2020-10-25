@@ -1,22 +1,28 @@
 // @flow
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import { useState } from 'react'
 import {
     Container, CssBaseline, Grid, Paper, Card,
     CardActionArea, CardActions, CardMedia, CardContent,
-    Typography, Button
+    Typography, Button, Collapse
     } from '@material-ui/core';
 
 type Props = {
   rootMaxWidth: number,
   mediaMaxHeight: number,
   cardImg: any,
+  content?: any,
 }
 
-export default function ContentCard({rootMaxWidth, mediaMaxHeight, cardImg} : Props){
+export default function ContentCard({rootMaxWidth, mediaMaxHeight, cardImg, content} : Props){
+  const [expanded, setExpanded]: bool = useState(false);
+  const toggleExpand = () =>{
+    setExpanded(!expanded);
+  }
     return(
         <Card style={{maxWidth: rootMaxWidth}}>
-        <CardActionArea>
+        <CardActionArea onClick={toggleExpand}>
           <CardMedia
             style={{
               maxHeight: mediaMaxHeight,
@@ -25,21 +31,26 @@ export default function ContentCard({rootMaxWidth, mediaMaxHeight, cardImg} : Pr
             image={cardImg}
             title="Profile Picture"
           />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
-              Lou Sonetz
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              I am an Engineer!
-            </Typography>
-          </CardContent>
         </CardActionArea>
+        <CardContent>
+          <Typography gutterBottom variant="h3">
+            Article Title
+          </Typography>
+          <Typography variant="h5" color="textSecondary">
+            Ray Charles, Sept 21 2020
+          </Typography>
+        <Collapse in={expanded} timeout="auto" unmountOnExit>
+          <Typography variant="body1" color="textPrimary">
+            {content}
+          </Typography>
+        </Collapse>
+        </CardContent>
         <CardActions>
           <Button size="large" color="primary">
-            Pop a Lou
+            Share
           </Button>
-          <Button size="large" color="primary">
-            Learn More
+          <Button size="large" color="primary" onClick={toggleExpand}>
+            {(expanded) ? 'Collapse' : 'Expand'}
           </Button>
         </CardActions>
       </Card>
