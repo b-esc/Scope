@@ -24,28 +24,21 @@ export default function PortfolioSum()
   const [tickerData, setTickerData] = useStore("mainPageTickerData");
 
   return (
-    <div className={StyleClasses.root}>
-      <CssBaseline />
-      <NavBar />
-      <main className={StyleClasses.content}>
-        <div className={StyleClasses.appBarSpacer} />
-        <Container maxWidth="lg" className={StyleClasses.container}>
-          <Grid container direction="row" spacing={2}>
-            {/* Personal Information */}
-            <Grid item xs={3}>
-              <ContentCard mediaMaxHeight={240} cardImg={"https://i.imgur.com/fUIsscE.jpg"} />
-            </Grid>
-            {/* Public Portfolio */}
-            <Grid item xs={9} container direction="column">
-              <Grid item>
-                <Paper className = {StyleClasses.paper}>
-                  Public Portfolio
-                </Paper>
-              </Grid>
-            </Grid>
+    <Container maxWidth="lg" className={StyleClasses.container}>
+      <Grid container direction="row" spacing={2}>
+        {/* Personal Information */}
+        <Grid item xs={3}>
+          <ContentCard mediaMaxHeight={240} cardImg={"https://i.imgur.com/fUIsscE.jpg"} />
+        </Grid>
+        {/* Public Portfolio */}
+        <Grid item xs={9} container direction="column">
+          <Grid item>
+            <Paper className = {StyleClasses.paper}>
+              Public Portfolio
+            </Paper>
           </Grid>
-        </Container>
-      </main>
-    </div>
+        </Grid>
+      </Grid>
+    </Container>
   )
 }

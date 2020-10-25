@@ -22,6 +22,7 @@ function App(){
       <NavBar />
       {/* TODO remove brazil */ }
       <br></br>
+      <br></br>
         <Switch>
           <Route>
             <Route exact path="/" component={Dashboard}/>

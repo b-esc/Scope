@@ -22,42 +22,37 @@ import {sampleStory1} from '../static/sampleContent';
 
 export default function StoriesPage()
 {
-  const StyleClasses = useStyles();
-  const fixedHeightPaper = clsx(StyleClasses.paper, StyleClasses.fixedHeight);
   const [tickerData, setTickerData] = useStore("mainPageTickerData");
 
   return (
-    <div className={StyleClasses.root}>
-      <CssBaseline />
-      <NavBar />
-      <main className={StyleClasses.content}>
-        <div className={StyleClasses.appBarSpacer} />
-        <Grid container justify="center" spacing={4}>
-          <Grid item>
-            <ContentCard
-              rootMaxWidth={800}
-              mediaMaxHeight={400}
-              cardImg={bcImg}
-              content={sampleStory1}
-            />
-          </Grid>
-          <ContentCard
-            rootMaxWidth={800}
-            mediaMaxHeight={400}
-            cardImg={lou}
-          />
-          <Grid item>
-            <ContentCard
-              rootMaxWidth={800}
-              mediaMaxHeight={400}
-              cardImg={dna_large}
-              content={sampleStory1}
-            />
-          </Grid>
-          <Grid item>
-          </Grid>
-        </Grid>
-      </main>
-    </div>
+    <Grid container align="center"
+     justify="center"
+     direction="column" spacing={4}>
+      <Grid item>
+        <ContentCard
+          rootMaxWidth={800}
+          mediaMaxHeight={400}
+          cardImg={bcImg}
+          content={sampleStory1}
+        />
+      </Grid>
+      <Grid item>
+      <ContentCard
+        rootMaxWidth={800}
+        mediaMaxHeight={400}
+        cardImg={lou}
+      />
+      </Grid>
+      <Grid item>
+        <ContentCard
+          rootMaxWidth={800}
+          mediaMaxHeight={400}
+          cardImg={dna_large}
+          content={sampleStory1}
+        />
+      </Grid>
+      <Grid item>
+      </Grid>
+    </Grid>
   )
 }

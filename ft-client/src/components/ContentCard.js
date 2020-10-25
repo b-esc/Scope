@@ -26,23 +26,26 @@ export default function ContentCard({rootMaxWidth, mediaMaxHeight, cardImg, cont
           <CardMedia
             style={{
               maxHeight: mediaMaxHeight,
+              maxWidth: rootMaxWidth,
             }}
             component="img"
             image={cardImg}
             title="Profile Picture"
           />
         </CardActionArea>
-        <CardContent>
+        <CardContent style={{maxHeight: rootMaxWidth,}}>
           <Typography gutterBottom variant="h3">
             Article Title
           </Typography>
           <Typography variant="h5" color="textSecondary">
             Ray Charles, Sept 21 2020
           </Typography>
-        <Collapse in={expanded} timeout="auto" unmountOnExit>
-          <Typography variant="body1" color="textPrimary">
-            {content}
-          </Typography>
+        <Collapse in={expanded} timeout="auto">
+          <CardContent >
+            <Typography paragraph>
+              {content}
+            </Typography>
+          </CardContent>
         </Collapse>
         </CardContent>
         <CardActions>

@@ -15,7 +15,7 @@ const samplePairs: Array<CoinPair> = [{ coinPairStr: "BTC/USD", change24hr: 2.4 
 
 export default function Navbar() {
     return (
-        <AppBar position="absolute">
+        <AppBar position="static">
             <Grid container direction="column">
                 <Grid container spacing={5} direction="row" item justify="center">
                         <Grid item>

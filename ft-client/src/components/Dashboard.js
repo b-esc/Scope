@@ -23,59 +23,47 @@ export default function Dashboard() {
   }
 
   return (
-    <div className={StyleClasses.root}>
-
-      <main className={StyleClasses.content}>
-        <div className={StyleClasses.appBarSpacer} />
-        <Container maxWidth="lg" className={StyleClasses.container}>
-          <Grid padding={2} container>
-            <Grid container spacing={2} item>
-              {/* News Preview */}
-              <Grid item>
-                <Paper>
-                  <ContentCard
-                    rootMaxWidth={400}
-                    mediaMaxHeight={200}
-                    cardImg={bcImg}
-                  />
-                </Paper>
-              </Grid>
-              <Grid item>
-                <Paper>
-                  <ContentCard
-                    rootMaxWidth={400}
-                    mediaMaxHeight={200}
-                    cardImg={dnaImg}
-                  />
-                </Paper>
-              </Grid>
-              {/* Portfolio Summary */}
-              <Grid item>
-                <Paper>
-                  <LightweightChart
-                    containerId={"sampleLwChart"}
-                    width={400}
-                    height={370}
-                    lineData={SampleLineData}
-                  />
-                </Paper>
-              </Grid>
-            </Grid>
-
-
-
-            {/* Top Summarry */}
-            <Grid item xs={12}>
-              <Paper className={StyleClasses.paper}>
-                <Summary mainPageTickerData={tickerData} />
-              </Paper>
-            </Grid>
-
-
-
+    <Container maxWidth="lg" className={StyleClasses.container}>
+      <Grid spacing={2} padding={2} container>
+        <Grid container spacing={2} item>
+          {/* News Preview */}
+          <Grid item>
+            <Paper>
+              <ContentCard
+                rootMaxWidth={400}
+                mediaMaxHeight={200}
+                cardImg={bcImg}
+              />
+            </Paper>
           </Grid>
-        </Container>
-      </main>
-    </div>
+          <Grid item>
+            <Paper>
+              <ContentCard
+                rootMaxWidth={400}
+                mediaMaxHeight={200}
+                cardImg={dnaImg}
+              />
+            </Paper>
+          </Grid>
+          {/* Portfolio Summary */}
+          <Grid item>
+            <Paper>
+              <LightweightChart
+                containerId={"sampleLwChart"}
+                width={400}
+                height={370}
+                lineData={SampleLineData}
+              />
+            </Paper>
+          </Grid>
+        </Grid>
+        {/* Top Summarry */}
+        <Grid item xs={12}>
+          <Paper className={StyleClasses.paper}>
+            <Summary mainPageTickerData={tickerData} />
+          </Paper>
+        </Grid>
+      </Grid>
+    </Container>
   )
 }
